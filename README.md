@@ -18,9 +18,9 @@ App uses NestJS Framework -v `10.0.0`, it uses typeORM -v `0.3.20`
 - [x] User CRUD Resource 
 - [x] User Resource with custom filter endpoint
 - [x] Task CRUD Resource
-- [] Task Resource with custom filter endpoint
-- [] Analytics endpoint
-- [] Docker Compose file to build the Postgre Database
+- [ ] Task Resource with custom filter endpoint
+- [ ] Analytics endpoint
+- [ ] Docker Compose file to build the Postgre Database
 
 ## Installation
 
