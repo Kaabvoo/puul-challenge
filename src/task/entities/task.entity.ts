@@ -19,7 +19,7 @@ export class Task {
     hoursEstimated: number;
 
     @Column({ type: "date" })
-    dueDate: string;
+    dueDate: Date;
 
     @ManyToMany(() => User, user => user.task)
     @JoinTable({ name: "user_task", inverseJoinColumn: { name: "user", referencedColumnName: "id" }, joinColumn: { name: "task", referencedColumnName: "id" } })

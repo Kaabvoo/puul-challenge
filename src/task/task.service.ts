@@ -3,7 +3,8 @@ import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { Task } from './entities/task.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { ArrayContains, LessThan, MoreThan, Repository } from 'typeorm';
+import { getFilterTask } from './dto/get-task.dto';
 
 @Injectable()
 export class TaskService {
@@ -21,6 +22,29 @@ export class TaskService {
       return error;
     }
     return user;
+  }
+
+  getFilterTask(query: getFilterTask) {
+    var tasks = this.taskRepo.find({
+      relations: ["user"],
+      order:
+      {
+        id: {
+          direction: query.sortAsc ? "ASC" : "DESC"
+        }
+      },
+      where: {
+        dueDate: query.beforeDate !== undefined ? query.beforeDate ? LessThan(query.dueDate) : MoreThan(query.dueDate) : null,
+        title: query.taskName !== undefined ? query.taskName : null,
+        user: {
+          id: query.userAssignedId.length > 0 ? ArrayContains(query.userAssignedId) : null,
+          name: query.nameAsignee !== undefined ? query.nameAsignee : null,
+          email: query.emailAsignee !== undefined ? query.nameAsignee : null
+        }
+      }
+    });
+
+    return tasks;
   }
 
   findAll() {
