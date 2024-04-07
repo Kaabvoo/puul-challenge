@@ -7,7 +7,7 @@
 
 ## Description
 
-This was a challenge made by [PUUL](https://www.puul.co/es)
+This was a challenge elavorated by [PUUL](https://www.puul.co/es) and developed by [Jose Guadalupe Cavazos Gomez](mailto:jgcavazos96@hotmail.com)
 
 ### Specs
 
